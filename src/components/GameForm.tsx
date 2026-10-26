@@ -1,3 +1,4 @@
+
 export function GameForm() {
     return (
         <form className="form">
