@@ -23,13 +23,29 @@ export interface IGame {
   description?: Description[]
   rating?: number
   price?: number
-  genre?: string
+  genre?: GameGenre
   releaseDate: string
   createdAt: string
   updatedAt: string
   publishedAt: string
+  platforms: string[]
   cover?:IMedia
 }
+
+export type GameInput = Omit<IGame,'id' | 'documentId' | 'cover' | 'createdAt' | 'updatedAt' | ' publishedAt' >
+
+
+export const GENRES = ['rpg','shooter','stategy','indie','horror'] as const
+
+export type GameGenre = (typeof GENRES)[number]
+export const GENRRE_LABELS: Record<GameGenre, string> = {
+  rpg: "рпг",
+  shooter: "шутер",
+  stategy: "стратегия",
+  indie: "инди",
+  horror: "хоррор"
+}
+
 
 export interface Description {
   type: string
